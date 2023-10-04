@@ -19,7 +19,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from dbus_next import BusType
-from pythoneda.event import Event
+from pythoneda import Event
 from pythoneda.infrastructure.dbus import DbusSignalEmitter
 from pythoneda.shared.artifact_changes.events import CommittedChangesPushed
 from pythoneda.shared.artifact_changes.events.infrastructure.dbus import DbusCommittedChangesPushed
