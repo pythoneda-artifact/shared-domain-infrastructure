@@ -59,6 +59,5 @@ class GitPostCommitHookCli(BaseObject, PrimaryPort):
             git_repo = GitRepo.from_folder(args.repository_folder)
             change = Change.from_unidiff_text(GitDiff(args.repository_folder).committed_diff(), git_repo.url, git_repo.rev, args.repository_folder)
             event = StagedChangesCommitted(change, GitCommit(args.repository_folder).latest_commit())
-            print(event)
-            GitPostCommitHookCli.logger().debug(f"Sending {type(event)} to {app}")
+            GitPostCommitHookCli.logger().debug(event)
             await app.accept(event)
