@@ -19,11 +19,8 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 import argparse
+from importlib import import_module
 from pythoneda import BaseObject, PrimaryPort
-from pythoneda.shared.artifact_changes import Change
-from pythoneda.shared.artifact_changes.events import StagedChangesCommitted
-from pythoneda.shared.git import GitCommit, GitDiff, GitRepo
-import sys
 
 class GitPostCommitHookCli(BaseObject, PrimaryPort):
 
@@ -40,24 +37,41 @@ class GitPostCommitHookCli(BaseObject, PrimaryPort):
         - pythoneda.shared.artifact_changes.events.StagedChangesCommitted
     """
 
+    @classmethod
+    @property
+    def is_one_shot_compatible(cls) -> bool:
+        """
+        Retrieves whether this primary port should be instantiated when
+        "one-shot" behavior is active.
+        It should return False unless the port listens to future messages
+        from outside.
+        :return: True in such case.
+        :rtype: bool
+        """
+        return True
+
     async def accept(self, app):
         """
         Processes the command specified from the command line.
         :param app: The PythonEDA instance.
         :type app: PythonEDA
         """
-        parser = argparse.ArgumentParser(description="Sends a StagedChangesCommitted events")
+        parser = argparse.ArgumentParser(description="Sends a artifact-related events")
+
+        parser.add_argument(
+            "-e", "--event", required=True, choices=['StagedChangesCommitted', 'CommittedChangesTagged', 'TagPushed'], help="The type of event to send."
+        )
         parser.add_argument(
             "-r", "--repository-folder", required=False, help="The repository folder"
         )
+        parser.add_argument(
+            "-t", "--tag", required=False, help="The tag"
+        )
+
         args, unknown_args = parser.parse_known_args()
 
-        if not args.repository_folder:
-            print(f"-r|--repository-folder is mandatory")
-            sys.exit(1)
-        else:
-            git_repo = GitRepo.from_folder(args.repository_folder)
-            change = Change.from_unidiff_text(GitDiff(args.repository_folder).committed_diff(), git_repo.url, git_repo.rev, args.repository_folder)
-            event = StagedChangesCommitted(change, GitCommit(args.repository_folder).latest_commit())
-            GitPostCommitHookCli.logger().debug(event)
-            await app.accept(event)
+        event_in_snake_case = self.__class__.camel_to_snake(args.event)
+
+        module = import_module(f'pythoneda.artifact.infrastructure.cli.{event_in_snake_case}_cli_handler')
+        handler_class = getattr(module, f'{args.event}CliHandler')
+        await handler_class(app).handle(args)

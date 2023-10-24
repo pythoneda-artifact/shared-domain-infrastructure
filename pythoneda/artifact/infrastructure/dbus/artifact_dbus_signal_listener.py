@@ -20,10 +20,8 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from dbus_next import BusType, Message
 from pythoneda.event import Event
-from pythoneda.shared.artifact_changes.events import StagedChangesCommitted
-from pythoneda.shared.artifact_changes.events.infrastructure.dbus import (
-    DbusStagedChangesCommitted
-)
+from pythoneda.shared.artifact_changes.events import ArtifactChangesCommitted, CommittedChangesTagged, StagedChangesCommitted, TagPushed
+from pythoneda.shared.artifact_changes.events.infrastructure.dbus import DbusArtifactChangesCommitted, DbusCommittedChangesTagged, DbusStagedChangesCommitted, DbusTagPushed
 from pythoneda.infrastructure.dbus import DbusSignalListener
 from typing import Dict
 
@@ -41,7 +39,10 @@ class ArtifactDbusSignalListener(DbusSignalListener):
 
     Collaborators:
         - pythoneda.application.pythoneda.PythonEDA: Receives relevant domain events.
+        - pythoneda.shared.artifact_changes.events.infrastructure.dbus.DbusArtifactChangesCommitted
+        - pythoneda.shared.artifact_changes.events.infrastructure.dbus.DbusCommittedChangesTagged
         - pythoneda.shared.artifact_changes.events.infrastructure.dbus.DbusStagedChangesCommitted
+        - pythoneda.shared.artifact_changes.events.infrastructure.dbus.DbusTagPushed
     """
 
     def __init__(self):
@@ -61,4 +62,10 @@ class ArtifactDbusSignalListener(DbusSignalListener):
         result = {}
         key = self.__class__.full_class_name(StagedChangesCommitted)
         result[key] = [DbusStagedChangesCommitted, BusType.SYSTEM]
+        key = self.__class__.full_class_name(TagPushed)
+        result[key] = [DbusTagPushed, BusType.SYSTEM]
+        key = self.__class__.full_class_name(CommittedChangesTagged)
+        result[key] = [DbusCommittedChangesTagged, BusType.SYSTEM]
+        key = self.__class__.full_class_name(ArtifactChangesCommitted)
+        result[key] = [DbusArtifactChangesCommitted, BusType.SYSTEM]
         return result
