@@ -1,7 +1,7 @@
 """
-pythoneda/artifact/infrastructure/cli/committed_changes_tagged_cli_handler.py
+pythoneda/artifact/infrastructure/cli/artifact_changes_committed_cli_handler.py
 
-This file defines the CommittedChangesTaggedCliHandler class.
+This file defines the ArtifactChangesCommittedCliHandler class.
 
 Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda/domain-artifact-infrastructure
 
@@ -19,29 +19,30 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from pythoneda.infrastructure.cli import CliHandler
-from pythoneda.shared.artifact_changes.events import CommittedChangesTagged
-from pythoneda.shared.git import GitRepo
+from pythoneda.shared.artifact_changes import Change
+from pythoneda.shared.artifact_changes.events import ArtifactChangesCommitted
+from pythoneda.shared.git import GitCommit, GitDiff, GitRepo
 import sys
 
 
-class CommittedChangesTaggedCliHandler(CliHandler):
+class ArtifactChangesCommittedCliHandler(CliHandler):
 
     """
-    A CLI handler in charge of handling CommittedChangesTagged events.
+    A CLI handler in charge of handling ArtifactChangesCommitted events.
 
-    Class name: CommittedChangesTaggedCliHandler
+    Class name: ArtifactChangesCommittedCliHandler
 
     Responsibilities:
-        - Build and emit a CommittedChangesTagged event from the information provided by the CLI.
+        - Build and emit a ArtifactChangesCommitted event from the information provided by the CLI.
 
     Collaborators:
-        - pythoneda.artifact.application.ArtifactApp: Gets notified back to process the CommittedChangesTagged event.
-        - pythoneda.shared.artifact_changes.events.CommittedChangesTagged
+        - pythoneda.artifact.application.ArtifactApp: Gets notified back to process the ArtifactChangesCommitted event.
+        - pythoneda.shared.artifact_changes.events.ArtifactChangesCommitted
     """
 
     def __init__(self, app):
         """
-        Creates a new CommittedChangesTaggedCliHandler.
+        Creates a new ArtifactChangesCommittedCliHandler.
         :param app: The ArtifactApp application.
         :type app: pythoneda.artifact.application.ArtifactApp
         """
@@ -58,8 +59,13 @@ class CommittedChangesTaggedCliHandler(CliHandler):
             sys.exit(1)
         else:
             git_repo = GitRepo.from_folder(args.repository_folder)
-            event = CommittedChangesTagged(
-                args.tag, git_repo.url, git_repo.rev, git_repo.folder
+            change = Change.from_unidiff_text(
+                GitDiff(args.repository_folder).committed_diff(),
+                git_repo.url,
+                git_repo.rev,
+                args.repository_folder,
             )
-            CommittedChangesTaggedCliHandler.logger().debug(event)
+            hash, diff = GitCommit(args.repository_folder).latest_commit()
+            event = ArtifactChangesCommitted(change, hash)
+            ArtifactChangesCommittedCliHandler.logger().debug(event)
             await self.app.accept(event)
