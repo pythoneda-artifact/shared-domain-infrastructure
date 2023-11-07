@@ -18,7 +18,7 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-__path__ = __import__('pkgutil').extend_path(__path__, __name__)
+__path__ = __import__("pkgutil").extend_path(__path__, __name__)
 
-from .artifact_dbus_signal_emitter import ArtifactDbusSignalEmitter
-from .artifact_dbus_signal_listener import ArtifactDbusSignalListener
+from .domain_artifact_dbus_signal_emitter import DomainArtifactDbusSignalEmitter
+from .domain_artifact_dbus_signal_listener import DomainArtifactDbusSignalListener
