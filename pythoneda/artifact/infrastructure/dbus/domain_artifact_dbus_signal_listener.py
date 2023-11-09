@@ -34,7 +34,7 @@ class DomainArtifactDbusSignalListener(ArtifactDbusSignalListener):
 
     Collaborators:
         - pythoneda.application.pythoneda.PythonEDA: Receives relevant domain events.
-        - pythoneda.shared.artifact_changes.events.infrastructure.dbus.*
+        - pythoneda.shared.artifact.events.infrastructure.dbus.*
     """
 
     def __init__(self):

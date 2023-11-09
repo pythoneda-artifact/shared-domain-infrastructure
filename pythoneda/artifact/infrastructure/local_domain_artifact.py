@@ -20,11 +20,13 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from pythoneda import listen
 from pythoneda.shared.artifact import LocalArtifact
-from pythoneda.shared.artifact_changes.events import (
+from pythoneda.shared.artifact.artifact.events import (
     ArtifactChangesCommitted,
     ArtifactCommitPushed,
     ArtifactCommitTagged,
     ArtifactTagPushed,
+)
+from pythoneda.shared.artifact.events import (
     CommittedChangesPushed,
     CommittedChangesTagged,
     StagedChangesCommitted,
