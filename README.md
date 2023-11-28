@@ -1,20 +1,20 @@
-# Domain Artifact Infrastructure
+# pythoneda-shared-pythoneda-artifact/domain-infrastructure
 
-Infrastructure layer for [pythoneda-shared-pythoneda](https://github.com/pythoneda-shared-pythoneda "pythoneda-shared-pythoneda")/[domain-artifact](https://github.com/pythoneda-shared-pythoneda/domain-artifact "domain-artifact").
+Infrastructure layer for [pythoneda-shared-pythoneda](https://github.com/pythoneda-shared-pythoneda-artifact "pythoneda-shared-pythoneda-artifact")/[domain](https://github.com/pythoneda-shared-pythoneda-artifact-def/domain "domain").
 
 ## How to declare it in your flake
 
-Check the latest tag of the artifact repository: [https://github.com/pythoneda-shared-pythoneda/domain-artifact-infrastructure-artifact/tags](https://github.com/pythoneda-shared-pythoneda/domain-artifact-infrastructure-artifact/tags) and use it instead of the `[version]` placeholder below.
+Check the latest tag of this repository and use it instead of the `[version]` placeholder below.
 
 ```nix
 {
   description = "[..]";
   inputs = rec {
     [..]
-    pythoneda-shared-pythoneda-domain-artifact-infrastructure = {
+    pythoneda-shared-pythoneda-artifact-domain-infrastructure = {
       [optional follows]
       url =
-        "github:pythoneda-shared-pythoneda/domain-artifact-infrastructure/[version]?dir=domain-artifact-infrastructure";
+        "github:pythoneda-shared-pythoneda-artifact-def/domain-infrastructure/[version]";
     };
   };
   outputs = [..]
@@ -25,10 +25,7 @@ Should you use another PythonEDA modules, you might want to pin those also used 
 
 Use the specific package depending on your system (one of `flake-utils.lib.defaultSystems`) and Python version:
 
-- `#packages.[system].pythoneda-shared-pythoneda-domain-artifact-infrastructure-python38` 
-- `#packages.[system].pythoneda-shared-pythoneda-domain-artifact-infrastructure-python39` 
-- `#packages.[system].pythoneda-shared-pythoneda-domain-artifact-infrastructure-python310` 
-- `#packages.[system].pythoneda-shared-pythoneda-domain-artifact-infrastructure-python311` 
-
-The Nix flake is under the 
-[domain-artifact-infrastructure](https://github.com/pythoneda-shared-pythoneda/domain-artifact-infrastructure-artifact/tree/main/domain-artifact-infrastructure "domain-artifact-infrastructure") folder.
+- `#packages.[system].pythoneda-shared-pythoneda-artifact-domain-infrastructure-python38` 
+- `#packages.[system].pythoneda-shared-pythoneda-artifact-domain-infrastructure-python39` 
+- `#packages.[system].pythoneda-shared-pythoneda-artifact-domain-infrastructure-python310` 
+- `#packages.[system].pythoneda-shared-pythoneda-artifact-domain-infrastructure-python311` 
