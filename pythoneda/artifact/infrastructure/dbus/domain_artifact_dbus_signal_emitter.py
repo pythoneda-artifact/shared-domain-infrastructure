@@ -3,7 +3,7 @@ pythoneda/artifact/infrastructure/dbus/domain_artifact_dbus_signal_emitter.py
 
 This file defines the DomainArtifactDbusSignalEmitter class.
 
-Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda/domain-artifact-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda-artifact-def/domain-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

@@ -3,7 +3,7 @@ pythoneda/domain/artifact/infrastructure/cli/domain_cli.py
 
 This file defines the DomainCli.
 
-Copyright (C) 2023-today rydnr's https://github.com/pythoneda-domain/python-artifact-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda-artifact-def/domain-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

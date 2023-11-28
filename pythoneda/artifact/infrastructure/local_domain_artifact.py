@@ -3,7 +3,7 @@ pythoneda/artifact/infrastructure/local_domain_artifact.py
 
 This file defines LocalDomainArtifact
 
-Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda/domain-artifact-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda-def/domain-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -131,9 +131,9 @@ class LocalDomainArtifact(LocalArtifact):
         """
         Gets notified of a StagedChangesCommitted event.
         :param event: The event.
-        :type event: pythoneda.shared.artifact_changes.events.StagedChangesCommitted
+        :type event: pythoneda.shared.artifact.events.StagedChangesCommitted
         :return: An event notifying the commit has been pushed.
-        :rtype: pythoneda.shared.artifact_changes.events.CommittedChangesPushed
+        :rtype: pythoneda.shared.artifact.events.CommittedChangesPushed
         """
         return await cls.instance().commit_push(event)
 
@@ -145,9 +145,9 @@ class LocalDomainArtifact(LocalArtifact):
         """
         Gets notified of a CommittedChangesPushed event.
         :param event: The event.
-        :type event: pythoneda.shared.artifact_changes.events.CommitedChangesPushed
+        :type event: pythoneda.shared.artifact.events.CommitedChangesPushed
         :return: An event notifying the changes have been pushed.
-        :rtype: pythoneda.shared.artifact_changes.events.CommittedChangesTagged
+        :rtype: pythoneda.shared.artifact.events.CommittedChangesTagged
         """
         return await cls.instance().commit_tag(event)
 
@@ -160,9 +160,9 @@ class LocalDomainArtifact(LocalArtifact):
         Gets notified of a CommittedChangesTagged event.
         Pushes the changes and emits a TagPushed event.
         :param event: The event.
-        :type event: pythoneda.shared.artifact_changes.events.CommittedChangesTagged
+        :type event: pythoneda.shared.artifact.events.CommittedChangesTagged
         :return: An event notifying the changes have been pushed.
-        :rtype: pythoneda.shared.artifact_changes.events.TagPushed
+        :rtype: pythoneda.shared.artifact.events.TagPushed
         """
         return await cls.instance().tag_push(event)
 
@@ -173,9 +173,9 @@ class LocalDomainArtifact(LocalArtifact):
         Gets notified of a TagPushed event.
         Pushes the changes and emits a TagPushed event.
         :param event: The event.
-        :type event: pythoneda.shared.artifact_changes.events.TagPushed
+        :type event: pythoneda.shared.artifact.events.TagPushed
         :return: An event notifying the changes in the artifact have been committed.
-        :rtype: pythoneda.shared.artifact_changes.events.ArtifactChangesCommitted
+        :rtype: pythoneda.shared.artifact.events.ArtifactChangesCommitted
         """
         return await cls.instance().artifact_commit_from_TagPushed(event)
 
@@ -187,9 +187,9 @@ class LocalDomainArtifact(LocalArtifact):
         """
         Gets notified of an ArtifactChangesCommitted event.
         :param event: The event.
-        :type event: pythoneda.shared.artifact_changes.events.ArtifactChangesCommitted
+        :type event: pythoneda.shared.artifact.events.ArtifactChangesCommitted
         :return: An event notifying the commit in the artifact repository has been pushed.
-        :rtype: pythoneda.shared.artifact_changes.events.ArtifactCommitPushed
+        :rtype: pythoneda.shared.artifact.events.ArtifactCommitPushed
         """
         return await cls.instance().artifact_commit_push(event)
 
@@ -201,9 +201,9 @@ class LocalDomainArtifact(LocalArtifact):
         """
         Gets notified of an ArtifactCommitPushed event.
         :param event: The event.
-        :type event: pythoneda.shared.artifact_changes.events.ArtifactCommitPushed
+        :type event: pythoneda.shared.artifact.events.ArtifactCommitPushed
         :return: An event notifying the commit in the artifact repository has been tagged.
-        :rtype: pythoneda.shared.artifact_changes.events.ArtifactCommitTagged
+        :rtype: pythoneda.shared.artifact.events.ArtifactCommitTagged
         """
         return await cls.instance().artifact_commit_tag(event)
 
@@ -230,8 +230,8 @@ class LocalDomainArtifact(LocalArtifact):
         Listens to ArtifactTagPushed event to check if affects any of its dependencies.
         In such case, it creates a commit with the dependency change.
         :param event: The event.
-        :type event: pythoneda.shared.artifact_changes.events.ArtifactTagPushed
+        :type event: pythoneda.shared.artifact.events.ArtifactTagPushed
         :return: An event representing the commit.
-        :rtype: pythoneda.shared.artifact_changes.events.ArtifactChangesCommitted
+        :rtype: pythoneda.shared.artifact.events.ArtifactChangesCommitted
         """
         return await cls.instance().artifact_commit_from_ArtifactTagPushed(event)

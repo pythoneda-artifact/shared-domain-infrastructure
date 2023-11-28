@@ -3,7 +3,7 @@ pythoneda/artifact/infrastructure/dbus/__init__.py
 
 This file ensures pythoneda.artifact.infrastructure.dbus is a namespace.
 
-Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda/domain-artifact-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda-artifact-def/domain-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
