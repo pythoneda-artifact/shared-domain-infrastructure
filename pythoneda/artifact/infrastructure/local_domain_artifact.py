@@ -69,7 +69,6 @@ class LocalDomainArtifact(LocalArtifact):
         nixos = NixosNixFlake.default()
         banner = PythonedaSharedPythonedaBannerNixFlake.default()
         inputs = [flake_utils, nixos, banner]
-        version = self.find_out_version(folder)
         super().__init__(
             "pythoneda-shared-pythoneda-domain",
             self.find_out_version(folder),
@@ -145,7 +144,7 @@ class LocalDomainArtifact(LocalArtifact):
         """
         Gets notified of a CommittedChangesPushed event.
         :param event: The event.
-        :type event: pythoneda.shared.artifact.events.CommitedChangesPushed
+        :type event: pythoneda.shared.artifact.events.CommittedChangesPushed
         :return: An event notifying the changes have been pushed.
         :rtype: pythoneda.shared.artifact.events.CommittedChangesTagged
         """
