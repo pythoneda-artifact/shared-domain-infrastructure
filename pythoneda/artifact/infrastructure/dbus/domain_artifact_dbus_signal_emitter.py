@@ -1,3 +1,4 @@
+# vim: set fileencoding=utf-8
 """
 pythoneda/artifact/infrastructure/dbus/domain_artifact_dbus_signal_emitter.py
 
@@ -33,8 +34,8 @@ class DomainArtifactDbusSignalEmitter(ArtifactDbusSignalEmitter):
         - Emit domain events as d-bus signals.
 
     Collaborators:
-        - pythoneda.application.PythonEDA: Requests emitting events.
-        - pythoneda.shared.artifact_changes.events.infrastructure.dbus.*
+        - pythoneda.shared.application.PythonEDA: Requests emitting events.
+        - pythoneda.shared.artifact.events.infrastructure.dbus.*
     """
 
     def __init__(self):

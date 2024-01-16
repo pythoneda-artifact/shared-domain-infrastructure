@@ -1,3 +1,4 @@
+# vim: set fileencoding=utf-8
 """
 pythoneda/artifact/infrastructure/dbus/domain_artifact_dbus_signal_listener.py
 
@@ -33,7 +34,7 @@ class DomainArtifactDbusSignalListener(ArtifactDbusSignalListener):
         - Listen to signals relevant to domain-artifact.
 
     Collaborators:
-        - pythoneda.application.pythoneda.PythonEDA: Receives relevant domain events.
+        - pythoneda.shared.application.PythonEDA: Receives relevant domain events.
         - pythoneda.shared.artifact.events.infrastructure.dbus.*
     """
 
