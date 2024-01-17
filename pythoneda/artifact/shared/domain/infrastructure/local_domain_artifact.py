@@ -1,10 +1,10 @@
 # vim: set fileencoding=utf-8
 """
-pythoneda/artifact/infrastructure/local_domain_artifact.py
+pythoneda/artifact/shared/domain/infrastructure/local_domain_artifact.py
 
 This file defines LocalDomainArtifact
 
-Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda-def/domain-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-artifact/shared-domain-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

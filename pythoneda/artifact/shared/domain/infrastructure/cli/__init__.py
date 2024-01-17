@@ -1,10 +1,10 @@
 # vim: set fileencoding=utf-8
 """
-pythoneda/artifact/infrastructure/cli/__init__.py
+pythoneda/artifact/shared/domain/infrastructure/cli/__init__.py
 
-This file ensures pythoneda.artifact.infrastructure.cli is a namespace.
+This file ensures pythoneda.artifact.shared.domain.infrastructure.cli is a namespace.
 
-Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda-artifact-def/domain-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-artifact/shared-domain-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by

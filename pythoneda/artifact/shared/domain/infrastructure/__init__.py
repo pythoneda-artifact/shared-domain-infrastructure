@@ -1,8 +1,8 @@
 # vim: set fileencoding=utf-8
 """
-pythoneda/artifact/__init__.py
+pythoneda/artifact/shared/domain/infrastructure/__init__.py
 
-This file ensures pythoneda.artifact is a namespace.
+This file ensures pythoneda.artifact.shared.domain.infrastructure is a namespace.
 
 Copyright (C) 2023-today rydnr's pythoneda-artifact/shared-domain-infrastructure
 
@@ -20,3 +20,5 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 __path__ = __import__("pkgutil").extend_path(__path__, __name__)
+
+from .local_domain_artifact import LocalDomainArtifact

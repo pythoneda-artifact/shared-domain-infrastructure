@@ -1,10 +1,10 @@
 # vim: set fileencoding=utf-8
 """
-pythoneda/shared/artifact/infrastructure/cli/domain_repository_folder_cli.py
+pythoneda/domain/shared/domain/artifact/infrastructure/cli/domain_cli.py
 
-This file defines the DomainRepositoryFolderCli.
+This file defines the DomainCli.
 
-Copyright (C) 2023-today rydnr's pythoneda-shared-pythoneda-artifact-def/domain-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-artifact/shared-domain-infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,25 +19,25 @@ GNU General Public License for more details.
 You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
-from pythoneda.shared.artifact.infrastructure.cli import RepositoryFolderCli
+from pythoneda.shared.artifact.infrastructure.cli import ArtifactCli
 
 
-class DomainRepositoryFolderCli(RepositoryFolderCli):
+class DomainCli(ArtifactCli):
 
     """
-    A PrimaryPort used to gather the repository folder information.
+    A PrimaryPort used as git hook to send artifact events.
 
-    Class name: DomainRepositoryFolderCli
+    Class name: DomainCli
 
     Responsibilities:
-        - Parse the command-line to retrieve the information about the repository folder.
+        - Parse the command-line to retrieve the information required, depending on the specific hook.
 
     Collaborators:
-        - PythonEDA subclasses: They are notified back with the information retrieved from the command line.
+        - pythoneda.shared.artifact.infrastructure.cli.*: CLI handlers.
     """
 
     def __init__(self):
         """
-        Creates a new DomainRepositoryFolderCli instance.
+        Creates a new DomainCli instance.
         """
         super().__init__()
