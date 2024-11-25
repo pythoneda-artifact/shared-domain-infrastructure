@@ -1,10 +1,10 @@
 # vim: set fileencoding=utf-8
 """
-pythoneda/artifact/shared/domain/infrastructure/cli/domain_repository_folder_cli.py
+pythoneda/artifact/shared/infrastructure/cli/domain_repository_folder_cli.py
 
 This file defines the DomainRepositoryFolderCli.
 
-Copyright (C) 2023-today rydnr's pythoneda-artifact/shared-domain-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-shared-pythonlang-art/infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@ from pythoneda.shared.artifact.infrastructure.cli import RepositoryFolderCli
 
 
 class DomainRepositoryFolderCli(RepositoryFolderCli):
-
     """
     A PrimaryPort used to gather the repository folder information.
 
@@ -41,6 +40,8 @@ class DomainRepositoryFolderCli(RepositoryFolderCli):
         Creates a new DomainRepositoryFolderCli instance.
         """
         super().__init__()
+
+
 # vim: syntax=python ts=4 sw=4 sts=4 tw=79 sr et
 # Local Variables:
 # mode: python

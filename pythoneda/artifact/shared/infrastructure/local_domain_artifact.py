@@ -1,10 +1,10 @@
 # vim: set fileencoding=utf-8
 """
-pythoneda/artifact/shared/domain/infrastructure/local_domain_artifact.py
+pythoneda/artifact/shared/infrastructure/local_domain_artifact.py
 
 This file defines LocalDomainArtifact
 
-Copyright (C) 2023-today rydnr's pythoneda-artifact/shared-domain-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-shared-pythonlang-artf/infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -43,7 +43,6 @@ from pythoneda.shared.nix.flake.licenses import Gpl3
 
 
 class LocalDomainArtifact(LocalArtifact):
-
     """
     A locally-cloned Domain Artifact.
 

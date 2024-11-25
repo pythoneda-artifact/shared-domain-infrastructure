@@ -1,10 +1,10 @@
 # vim: set fileencoding=utf-8
 """
-pythoneda/artifact/shared/domain/infrastructure/dbus/domain_artifact_dbus_signal_listener.py
+pythoneda/artifact/shared/infrastructure/dbus/domain_artifact_dbus_signal_listener.py
 
 This file defines the DomainArtifactDbusSignalListener class.
 
-Copyright (C) 2023-today rydnr's pythoneda-artifact/shared-domain-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-shared-pythonlang-artf/infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -23,7 +23,6 @@ from pythoneda.shared.artifact.infrastructure.dbus import ArtifactDbusSignalList
 
 
 class DomainArtifactDbusSignalListener(ArtifactDbusSignalListener):
-
     """
     A Port that listens to domain-artifact-relevant d-bus signals.
 
@@ -43,6 +42,8 @@ class DomainArtifactDbusSignalListener(ArtifactDbusSignalListener):
         Creates a new DomainArtifactDbusSignalListener instance.
         """
         super().__init__()
+
+
 # vim: syntax=python ts=4 sw=4 sts=4 tw=79 sr et
 # Local Variables:
 # mode: python

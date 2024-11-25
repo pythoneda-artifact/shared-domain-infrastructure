@@ -1,10 +1,10 @@
 # vim: set fileencoding=utf-8
 """
-pythoneda/artifact/shared/domain/infrastructure/__init__.py
+pythoneda/artifact/shared/infrastructure/dbus/__init__.py
 
-This file ensures pythoneda.artifact.shared.domain.infrastructure is a namespace.
+This file ensures pythoneda.artifact.shared.infrastructure.dbus is a namespace.
 
-Copyright (C) 2023-today rydnr's pythoneda-artifact/shared-domain-infrastructure
+Copyright (C) 2023-today rydnr's pythoneda-shared-pythonlang-artf/infrastructure
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,7 +21,9 @@ along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 __path__ = __import__("pkgutil").extend_path(__path__, __name__)
 
-from .local_domain_artifact import LocalDomainArtifact
+from .domain_artifact_dbus_signal_emitter import DomainArtifactDbusSignalEmitter
+from .domain_artifact_dbus_signal_listener import DomainArtifactDbusSignalListener
+
 # vim: syntax=python ts=4 sw=4 sts=4 tw=79 sr et
 # Local Variables:
 # mode: python
