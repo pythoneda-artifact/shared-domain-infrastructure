@@ -20,7 +20,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <https://www.gnu.org/licenses/>.
 """
 from pythoneda.shared import listen
-from pythoneda.shared.artifact import LocalArtifact
+from pythoneda.shared.artifact import AbstractArtifact
 from pythoneda.shared.artifact.artifact.events import (
     ArtifactChangesCommitted,
     ArtifactCommitPushed,
@@ -37,12 +37,12 @@ from pythoneda.shared.nix.flake import (
     FlakeUtilsNixFlake,
     License,
     NixosNixFlake,
-    PythonedaSharedPythonedaBannerNixFlake,
+    PythonedaSharedPythonlangBannerNixFlake,
 )
 from pythoneda.shared.nix.flake.licenses import Gpl3
 
 
-class LocalDomainArtifact(LocalArtifact):
+class LocalDomainArtifact(AbstractArtifact):
     """
     A locally-cloned Domain Artifact.
 
@@ -67,21 +67,21 @@ class LocalDomainArtifact(LocalArtifact):
         """
         flake_utils = FlakeUtilsNixFlake.default()
         nixos = NixosNixFlake.default()
-        banner = PythonedaSharedPythonedaBannerNixFlake.default()
+        banner = PythonedaSharedPythonlangBannerNixFlake.default()
         inputs = [flake_utils, nixos, banner]
         super().__init__(
-            "pythoneda-shared-pythoneda-domain",
+            "pythoneda-shared-pythonlang-domain",
             self.find_out_version(folder),
             self.url_for,
             inputs,
             "pythoneda",
             "Support for event-driven architectures in Python",
-            "https://github.com/pythoneda-shared-pythoneda/domain",
+            "https://github.com/pythoneda-shared-pythonlang-def/domain",
             License.from_id(
                 Gpl3.license_type(),
                 "2023",
                 "rydnr",
-                "https://github.com/pythoneda-shared-pythoneda/domain",
+                "https://github.com/pythoneda-shared-pythonlang/domain",
             ),
             ["rydnr <github@acm-sl.org>"],
             2023,
@@ -120,7 +120,7 @@ class LocalDomainArtifact(LocalArtifact):
         :return: The url.
         :rtype: str
         """
-        return f"https://github.com/pythoneda-shared-pythoneda/domain-artifact/{version}?dir=domain"
+        return f"https://github.com/pythoneda-shared-pythonlang-artf/domain/{version}"
 
     @classmethod
     @listen(StagedChangesCommitted)
