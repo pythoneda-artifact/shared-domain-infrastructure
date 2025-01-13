@@ -36,7 +36,7 @@ from pythoneda.shared.artifact.events import (
 from pythoneda.shared.nix.flake import (
     FlakeUtilsNixFlake,
     License,
-    NixosNixFlake,
+    NixpkgsNixFlake,
     PythonedaSharedPythonlangBannerNixFlake,
 )
 from pythoneda.shared.nix.flake.licenses import Gpl3
@@ -66,9 +66,9 @@ class LocalDomainArtifact(AbstractArtifact):
         :type folder: str
         """
         flake_utils = FlakeUtilsNixFlake.default()
-        nixos = NixosNixFlake.default()
+        nixpkgs = NixpkgsNixFlake.default()
         banner = PythonedaSharedPythonlangBannerNixFlake.default()
-        inputs = [flake_utils, nixos, banner]
+        inputs = [flake_utils, nixpkgs, banner]
         super().__init__(
             "pythoneda-shared-pythonlang-domain",
             self.find_out_version(folder),
